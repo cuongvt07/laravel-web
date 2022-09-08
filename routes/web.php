@@ -8,6 +8,7 @@ use App\Components\Recusive;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\SliderAdminController;
+use App\Http\Controllers\AdminUsersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -81,6 +82,14 @@ Route::prefix('/admin')->group(function () {
         Route::post('/update/{id}', [SliderAdminController::class, 'update'])->name('slider.update');
 
         Route::get('/delete/{id}', [SliderAdminController::class, 'delete'])->name('slider.delete');
+
+    });
+
+    Route::prefix('/users')->group(function () {
+
+        Route::get('/', [AdminUsersController::class, 'index'])->name('users.index');
+    
+        
 
     });
 
