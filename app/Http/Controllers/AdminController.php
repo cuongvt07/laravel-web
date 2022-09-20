@@ -30,4 +30,9 @@ class AdminController extends Controller
             return redirect()->to('home');
         }
     }
+    public function logoutAdmin(Request $request){
+        $request->session()->forget('email');
+        $request->session()->forget('password');
+        return view('login');
+    }
 }

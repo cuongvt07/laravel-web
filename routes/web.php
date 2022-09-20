@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Category;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MenuController;
@@ -29,7 +30,7 @@ Route::prefix('/admin')->group(function () {
 
     Route::prefix('/categories')->group(function () {
 
-        Route::get('/', [CategoryController::class, 'index'])->name('categories.index');
+        Route::get('/', [CategoryController::class, 'index'])->name('categories.index')->middleware(['can:category-list']);
 
         Route::get('/create', [CategoryController::class, 'create'])->name('categories.create');
 
@@ -94,9 +95,12 @@ Route::prefix('/admin')->group(function () {
     });
 
 });
-Route::get('/admin', [AdminController::class, 'loginAdmin']);
+Route::get('/admin', [AdminController::class, 'loginAdmin'])->name('loginAdmin');
 
 Route::post('/admin', [AdminController::class, 'postloginAdmin']);
+
+Route::get('/admin', [AdminController::class, 'logoutAdmin'])->name('logoutAdmin');
+
 
 
 Route::group(['prefix' => 'filemanager', 'middleware'], function () {
