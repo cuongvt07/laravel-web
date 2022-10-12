@@ -35,7 +35,8 @@ class SliderAddRequest extends FormRequest
         return [
             'name.required' => 'Tên slider không được để trống',
             'name.unique' => 'Tên slider đã trùng',
-            'name.max' => 'Tên sản phẩm không được được quá 255 kí tự',        'name.max' => 'Tên sản phẩm không được được quá 255 kí tự',
+            'name.max' => 'Tên sản phẩm không được được quá 255 kí tự',    
+                'name.max' => 'Tên sản phẩm không được được quá 255 kí tự',
             'name.min' => 'Tên sản phẩm không được được nhỏ hơn 10   kí tự',
             'description.required' => 'Nội dung không được để trống',
             // 'contents.min' => 'Nội dung không được dưới 3 kí tự',
